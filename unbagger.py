@@ -112,11 +112,20 @@ def findXORKey():
     return XORKeyValue
 
 
-def main(ursnif_vbs):
+def defang(url):
+    url = url.replace('http', 'hxxp')
+    m = re.match(r'hxxp://(.*?)\/', url, re.I)
+    li = m.groups(0)[0].rsplit('.', 1)
+    li = '[.]'.join(li)
+    url = url.replace(m.groups(0)[0], li)
+    return url
+
+
+def main(vbs):
     payloadURLS = []
 
     print "\n- Parsing VBS file..."
-    noise = loadVBS(ursnif_vbs)
+    noise = loadVBS(vbs)
     print "    + Removed {0} lines of noise...".format(noise)
 
     print "\n- Locating de-obfuscation function..."
@@ -128,7 +137,8 @@ def main(ursnif_vbs):
     for m in grabStrings(deobFunc):
         ds = deobString(m[0], m[1])
         if "http" in ds:
-            payloadURLS.append(ds.replace('http', 'hxxp'))
+            ds = defang(ds)
+            payloadURLS.append(ds)
 
     print "- Secondary payload loactions: "
     print '\n'.join('    {}'.format(i) for i in payloadURLS)
