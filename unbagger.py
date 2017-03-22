@@ -10,7 +10,7 @@ __author__ = 'Dave Crawford'
 
 REGEXPS = {}
 
-REGEXPS['noiseFilter'] = r'^([a-z0-9]+)="[a-z0-9]+"\s*$'
+REGEXPS['noiseFilter'] = r'^([a-z0-9]+)=.+\s*$'
 REGEXPS['deobFunc'] = r'([0-9a-z]+)\("[0-9a-z]+","?[0-9a-z]+"?\)'
 REGEXPS['grabFunc'] = r'function\s+FUNCNAME\(([a-z0-9]+),([a-z0-9]+)\)(.*?)end function'
 REGEXPS['grabStrings'] = r'FUNCNAME\("([a-z0-9]+)","([a-z0-9]+)"\)'
