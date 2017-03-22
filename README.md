@@ -1,4 +1,6 @@
 # UnBagger
+### Description
+UnBagger is an analysis tool for quickly extracting IOCs from Xbagging Office Exploit (aka Bartallex) malware samples. Its intent is not to provide a comprehensive behavior report but rather to aid an IR team in rapidly determining if the infection chain completed.
 
 ### Usage
 1. Use your tool of choice to extract the embedded object from the Office document.
@@ -24,6 +26,9 @@
     
     - Extracted XOR key for payloads: 115
     ```
+### References 
+- ProofPoint [The Cybercrime Economics of Malicious Macros](https://www.proofpoint.com/sites/default/files/documents/bnt_download/pp-macroeconomics-rr.pdf)
+- Didier Stevens [MalDoc Anaysis](https://blog.didierstevens.com/2015/12/28/maldoc-get-range/)
 
 ### Changes
 #### v1.5 2017-03-21
