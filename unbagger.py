@@ -128,7 +128,7 @@ def main(vbs):
             ds = defang(ds)
             payloadURLS.append(ds)
 
-    print "- Secondary payload loactions: "
+    print "- Secondary payload locations: "
     print '\n'.join('    {}'.format(i) for i in payloadURLS)
 
     XORKey = findXORKey()
