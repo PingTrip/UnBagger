@@ -79,16 +79,18 @@ def deobString(arg1, arg2):
     s2h = []
     s2a = []
 
-    # two-bytes per loop and convert to int
+    # two-bytes per loop and convert hex string to int
     for i in range(0, len(arg1), 2):
         s2h.append(int(arg1[i:i+2], 16))
 
     iCycle = itertools.cycle(arg2)
     next(iCycle)
 
+    # Convert character to ascii numeric
     for i in range(0, len(arg1)/2):
         s2a.append(ord(next(iCycle)))
 
+    # XOR and convert ascii numeric to character
     for i in range(0, len(s2h)):
         retStr += chr(s2h[i] ^ s2a[i])
 
@@ -102,7 +104,7 @@ def findXORKey():
     m = re.search(REGEXPS['XORArray'], VBSSCRIPT, re.I | re.DOTALL)
     xorArray = m.groups(0)[0]
 
-    # find the single, non-assignment, reference to an array element
+    # find the single non-assignment reference to an array element
     m = re.search(REGEXPS['XORArrayItem'].replace('ARRAYNAME', xorArray), VBSSCRIPT, re.I | re.DOTALL)
     XORArrayItem = m.groups(0)[0]
 
